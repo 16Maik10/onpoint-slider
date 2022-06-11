@@ -1,0 +1,10 @@
+
+.nav__home{
+    background: url(../../public/images/nav.png) no-repeat center/100%;
+    padding: 12px 75px;
+    border: none;
+    margin: 50px 0 117px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 2;
+}

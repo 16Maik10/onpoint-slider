@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.App{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.slides{
+    display: flex;
+    overflow-x: hidden;
+}
+
+.slideWrapper{
+    position: relative;
+    padding: 0 7vw;
+}
