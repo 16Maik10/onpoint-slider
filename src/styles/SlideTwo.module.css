@@ -26,16 +26,16 @@
     width: 25vw;
     right: 0;
     mix-blend-mode: multiply;
-    opacity: 0.49;
     top: 50px;
+    opacity: 0.5;
 }
 
 .sperm_2{
     width: 32vw;
     right: 0;
     mix-blend-mode: multiply;
-    opacity: 0.52;
     top: 120px;
+    opacity: 0.5;
 }
 
 .sperm_main{
@@ -48,15 +48,15 @@
     width: 10vw;
     right: 0;
     mix-blend-mode: multiply;
-    opacity: 0.49;
     bottom: 400px;
+    opacity: 0.5;
 }
 
 .sperm_4{
     width: 10vw;
     right: 0;
-    opacity: 0.49;
     bottom: 300px;
+    opacity: 0.5;
 }
 
 .mainContent{
@@ -76,30 +76,63 @@
     max-width: 200px;
 }
 
-.message{
+.messageWrapper{
     max-height: 50vh;
     width: 80vw;
-    background: linear-gradient(0,transparent 10%, #fff 90%);
+    background-color: #fff;
     border-radius: 40px;
-    padding: 20px 60px 20px 20px;
-    overflow-y: scroll;
-    direction: rtl;
-    text-align: left;
+    border: 30px solid #fff;
+    border-left-width: 60px;;
     margin-top: 20px;
-    scrollbar-width: thin;
+    overflow: auto;
+}
+
+.message{
     line-height: 30px;
     font-size: 24px;
 }
 
 
-.message::-webkit-scrollbar {
-    width: 13px;    
-    padding-right: 20px;        /* ширина scrollbar */
-  }
-  .message::-webkit-scrollbar-track {
-    background: url(../../public/images/SlideTwo/scrollbar.png) no-repeat center/30% 100%;     /* цвет дорожки */
-  }
-  .message::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg,#92416d,#e094b6);    /* цвет плашки */
-    border-radius: 20px;    /* закругления плашки */  /* padding вокруг плашки */
-  }
+.spermAppears{
+    animation: spermAppears 1.2s linear;
+}
+
+.spermMainAppears{
+    animation: spermMainAppears 1.2s linear;
+}
+
+@keyframes spermAppears {
+    from{
+        transform: translate(10vw,5vw);
+        opacity: 0;
+    }
+
+    50%{
+        transform: translate(5vw,2.5vw);
+        opacity: 0.1;
+    }
+
+    to{
+        transform: translate(0,0);
+        opacity: 0.50;
+    }
+    
+}
+
+@keyframes spermMainAppears {
+    from{
+        transform: translate(10vw,5vw);
+        opacity: 0;
+    }
+
+    50%{
+        transform: translate(5vw,2.5vw);
+        opacity: 0.2;
+    }
+
+    to{
+        transform: translate(0,0);
+        opacity: 1;
+    }
+    
+}

@@ -82,7 +82,7 @@ class App extends React.Component {
           <Nav action={this.home} />
           <div className="slides">
             <SlideOne action={this.swapNext} />
-            <SlideTwo />
+            <SlideTwo show={this.state.currentSlide === 2}/>
             <SlideOne action={this.swapNext} />
             <SlideTwo />
           </div>
