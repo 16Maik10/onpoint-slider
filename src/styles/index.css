@@ -26,3 +26,25 @@
     position: relative;
     padding: 0 7vw;
 }
+
+#scrollbar-container {
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    top: 5px;
+    width: 5px;
+    background-color: #000;
+}
+
+#scrollbar {
+  position: absolute;
+  right: -4.5px;
+  height: 30px;
+  width: 15px;
+  border-radius: 10px;
+  background: url(../../public/images/SlideTwo/scroll.png) no-repeat center/cover;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

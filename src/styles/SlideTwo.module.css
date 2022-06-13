@@ -11,7 +11,7 @@
     content: "";
     display: block;
     position: absolute;
-    background: linear-gradient(210deg,#cc729b 5%,#fff 35%, #fff 65%, #85c7e7 95%);
+    background: linear-gradient(210deg,#cc729b 5%,#fff 35%, #fff 80%, #74d4fc 95%) no-repeat center/cover;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -48,14 +48,14 @@
     width: 10vw;
     right: 0;
     mix-blend-mode: multiply;
-    bottom: 400px;
+    bottom: 35vh;
     opacity: 0.5;
 }
 
 .sperm_4{
     width: 10vw;
     right: 0;
-    bottom: 300px;
+    bottom: 25vh;
     opacity: 0.5;
 }
 
@@ -76,15 +76,19 @@
     max-width: 200px;
 }
 
+.messageBox{
+    position: relative;
+}
+
 .messageWrapper{
     max-height: 50vh;
-    width: 80vw;
+    width: 75vw;
     background-color: #fff;
     border-radius: 40px;
     border: 30px solid #fff;
-    border-left-width: 60px;;
-    margin-top: 20px;
-    overflow: auto;
+    border-right-width: 40px;
+    margin: 20px 0 0 5vw;
+    overflow: scroll;
 }
 
 .message{
@@ -94,11 +98,11 @@
 
 
 .spermAppears{
-    animation: spermAppears 1.2s linear;
+    animation: spermAppears 2s linear;
 }
 
 .spermMainAppears{
-    animation: spermMainAppears 1.2s linear;
+    animation: spermMainAppears 2s linear;
 }
 
 @keyframes spermAppears {

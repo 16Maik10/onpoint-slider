@@ -11,18 +11,23 @@ class App extends React.Component {
     this.state = {
       slides: '',
       currentSlide: 1,
-      swipeStart: 0,
-      swipeEnd: 0,
+      swipeStartX: 0,
+      swipeEndX: 0,
+      swipeStartY: 0,
+      swipeEndY: 0,
       countOfSlides: 4
     }
   }
 
-  setPosition = (pos, variable) => {
-    this.setState({ [variable]: pos })
+  setPosition = (posX, posY, varX, varY) => {
+    this.setState({
+      [varX]: posX,
+      [varY]: posY,
+    })
   }
 
   swapNext = () => {
-    if(this.state.currentSlide === this.state.countOfSlides) {
+    if (this.state.currentSlide === this.state.countOfSlides) {
       return
     }
     this.setState((state) => ({ currentSlide: state.currentSlide + 1 }));
@@ -54,27 +59,79 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('i did')
+    let $ = document.getElementById.bind(document),
+      container = $('scrollbar-container'),
+      content = $('message'),
+      scroll = $('scrollbar');
+
     this.setState({
       slides: document.querySelector('.slides'),
     });
     document.addEventListener('touchstart', (e) => {
-      const pos = e.changedTouches[0].clientX;
-      this.setPosition(pos, 'swipeStart')
+      if (e.path.includes(scroll)) {
+        return false
+      }
+      const posX = e.changedTouches[0].clientX;
+      const posY = e.changedTouches[0].clientY;
+      this.setPosition(posX, posY, 'swipeStartX', 'swipeStartY')
     });
     document.addEventListener('touchend', (e) => {
-      const pos = e.changedTouches[0].clientX;
-      this.setPosition(pos, 'swipeEnd');
-      setTimeout(()=> {if(this.state.swipeStart === this.state.swipeEnd){
-        return
-      } else if (this.state.swipeStart > this.state.swipeEnd){
-        this.swapNext();
-      } else {
-        this.swapPrev();
-      }}, 10)
-      
+      if (e.path.includes(scroll)) {
+        return false
+      }
+      const posX = e.changedTouches[0].clientX;
+      const posY = e.changedTouches[0].clientY;
+      this.setPosition(posX, posY, 'swipeEndX', 'swipeEndY')
+      setTimeout(() => {
+        const { swipeStartX, swipeEndX, swipeStartY, swipeEndY } = this.state;
+        if (swipeStartX === swipeEndX || Math.abs(swipeEndY - swipeStartY) > Math.abs(swipeStartX - swipeEndX)) {
+          return
+        } else if (swipeStartX > swipeEndX) {
+          this.swapNext();
+        } else {
+          this.swapPrev();
+        }
+      }, 10)
     })
-}
+
+    console.log('Start');
+
+    function handleScroll (start) {
+      start.preventDefault();
+      let y = scroll.offsetTop;
+      let onMoveByMouse = function (end) {
+        let delta = end.pageY - start.pageY;
+        scroll.style.top = Math.min(container.clientHeight - scroll.clientHeight, Math.max(0, y + delta)) + 'px';
+        content.scrollTop = (content.scrollHeight * scroll.offsetTop / container.clientHeight);
+      };
+      let onMoveByTouch = function (end) {
+        let delta = end.changedTouches[0].clientY - start.changedTouches[0].clientY;
+        scroll.style.top = Math.min(container.clientHeight - scroll.clientHeight, Math.max(0, y + delta)) + 'px';
+        content.scrollTop = (content.scrollHeight * scroll.offsetTop / container.clientHeight);
+      };
+      document.addEventListener('mousemove', onMoveByMouse);
+      document.addEventListener('touchmove', onMoveByTouch);
+      document.addEventListener('mouseup', function () {
+        document.removeEventListener('mousemove', onMoveByMouse);
+      });
+      document.addEventListener('touchend', function () {
+        document.removeEventListener('touchmove', onMoveByTouch);
+      });
+    }
+
+    content.addEventListener('scroll', function (e) {
+      scroll.style.height = container.clientHeight * content.clientHeight / content.scrollHeight + "px";
+      scroll.style.top = container.clientHeight * content.scrollTop / content.scrollHeight + "px";
+    });
+    let event = new Event('scroll');
+
+    window.addEventListener('resize', content.dispatchEvent.bind(content, event));
+    content.dispatchEvent(event);
+
+    scroll.addEventListener('mousedown', handleScroll);
+    scroll.addEventListener('touchstart', handleScroll);
+    console.log('Done');
+  }
   render() {
     return (
       <div className="App">
@@ -82,7 +139,7 @@ class App extends React.Component {
           <Nav action={this.home} />
           <div className="slides">
             <SlideOne action={this.swapNext} />
-            <SlideTwo show={this.state.currentSlide === 2}/>
+            <SlideTwo show={this.state.currentSlide === 2} />
             <SlideOne action={this.swapNext} />
             <SlideTwo />
           </div>

@@ -112,12 +112,14 @@
     right: 70px;
     top: 270px;
     animation: move_2 8s infinite linear;
+    z-index: 3;
 }
 
 .bio_topActive{
     top: 100px;
     right: 13vw;
     animation: move_3 10s infinite linear;
+    z-index: 3;
 }
 
 
@@ -202,5 +204,11 @@
     }
     to{
         transform: translate(0,0);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .bio_spermTop{
+        right: -15%;
     }
 }
