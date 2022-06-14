@@ -1,15 +1,15 @@
-import classes from '../styles/SlideTwo.module.css'
+import classes from '../styles/slideTwo.module.css'
 
 function SlideTwo(props) {
     return (
-        <div className={` ${classes.SlideTwo} ${props.display ? 'show' : 'hide'}`} id="SlideTwo">
-            <img src="../../images/SlideTwo/sperm_1.png" className={`${classes.sperm} ${classes.sperm_1} ${props.show ? classes.spermAppears : ''}`} alt="sperm" />
-            <img src="../../images/SlideTwo/sperm_2.png" className={`${classes.sperm} ${classes.sperm_2} ${props.show ? classes.spermAppears : ''}`} width="12vw" alt="sperm" />
-            <img src="../../images/SlideTwo/sperm_main.png" className={`${classes.sperm} ${classes.sperm_main} ${props.show ? classes.spermMainAppears : ''}`} width="60vw" alt="sperm" />
-            <img src="../../images/SlideTwo/sperm_3.png" className={`${classes.sperm} ${classes.sperm_3} ${props.show ? classes.spermAppears : ''}`} width="7vw" alt="sperm" />
-            <img src="../../images/SlideTwo/sperm_4.png" className={`${classes.sperm} ${classes.sperm_4} ${props.show ? classes.spermAppears : ''}`} width="5vw" alt="sperm" />
+        <div className={classes.SlideTwo} id="SlideTwo">
+            <img src="../../images/SlideTwo/sperm_1.png" className={`${classes.sperm} ${classes.sperm_1}`} id="sperm1" alt="sperm" />
+            <img src="../../images/SlideTwo/sperm_2.png" className={`${classes.sperm} ${classes.sperm_2}`} width="12vw" id="sperm2" alt="sperm" />
+            <img src="../../images/SlideTwo/sperm_main.png" className={`${classes.sperm} ${classes.sperm_main}`} width="60vw" id="mainSperm" alt="sperm" />
+            <img src="../../images/SlideTwo/sperm_3.png" className={`${classes.sperm} ${classes.sperm_3}`} width="5vw" id="sperm3" alt="sperm" />
+            <img src="../../images/SlideTwo/sperm_4.png" className={`${classes.sperm} ${classes.sperm_4}`} width="5vw" id="sperm4" alt="sperm" />
             <div className={`${classes.mainContent} slideWrapper`}>
-                <h2 className={classes.title}>текст сообщения</h2>
+                <h2 className={`title ${classes.title_slide2}`}>текст сообщения</h2>
                 <div className={classes.messageBox}>
                     <div id="scrollbar-container">
                         <div id="scrollbar"></div>

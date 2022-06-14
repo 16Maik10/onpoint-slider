@@ -1,6 +1,6 @@
 import '../styles/footer.css'
 
-function Footer(props) {
+function Footer() {
     return (
         <footer className="container footer">
             <div className="logo" />

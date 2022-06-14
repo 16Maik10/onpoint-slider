@@ -4,8 +4,9 @@
     width: 57px;
     position: fixed;
     bottom: 20px;
+    z-index: 5;
 }
 
 .footer{
-    margin: 100px 7vw 25px;
+    margin: 100px auto 25px;
 }

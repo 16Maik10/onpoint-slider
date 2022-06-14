@@ -59,20 +59,19 @@
     opacity: 0.5;
 }
 
+.sperm_1,.sperm_2,.sperm_3,.sperm_4,.sperm_main{
+    transform: translate(10vw,5vw);
+    opacity: 0;
+    transition: opacity 4s, transform 4s;
+}
+
 .mainContent{
     margin-top: 20vh;
     position: relative;
     z-index: 2;
 }
 
-.title{
-    font-family: 'DIN Pro';
-    font-size: 27px;
-    line-height: 1.2;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #242424;
+.title_slide2{
     max-width: 200px;
 }
 
@@ -96,47 +95,3 @@
     font-size: 24px;
 }
 
-
-.spermAppears{
-    animation: spermAppears 2s linear;
-}
-
-.spermMainAppears{
-    animation: spermMainAppears 2s linear;
-}
-
-@keyframes spermAppears {
-    from{
-        transform: translate(10vw,5vw);
-        opacity: 0;
-    }
-
-    50%{
-        transform: translate(5vw,2.5vw);
-        opacity: 0.1;
-    }
-
-    to{
-        transform: translate(0,0);
-        opacity: 0.50;
-    }
-    
-}
-
-@keyframes spermMainAppears {
-    from{
-        transform: translate(10vw,5vw);
-        opacity: 0;
-    }
-
-    50%{
-        transform: translate(5vw,2.5vw);
-        opacity: 0.2;
-    }
-
-    to{
-        transform: translate(0,0);
-        opacity: 1;
-    }
-    
-}

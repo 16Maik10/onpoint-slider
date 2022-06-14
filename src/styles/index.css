@@ -1,11 +1,27 @@
+@font-face {
+    font-family: 'DIN Pro';
+    src: url(../../public/fonts/dinpro_light.otf);
+}
+
+@font-face {
+    font-family: Gilroy;
+    src: url(../../public/fonts/Gilroy-Light.otf);
+}
+
+@font-face {
+    font-family: 'Gilroy bold';
+    src: url(../../public/fonts/Gilroy-ExtraBold.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'DIN Pro';
 }
 
 .container{
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     flex-shrink: 0;
 }
@@ -27,6 +43,34 @@
     padding: 0 7vw;
 }
 
+.title{
+    font-family: 'DIN Pro';
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #242424;
+}
+
+.text{
+    font-family: Gilroy;
+    font-size: 109px;
+    line-height: 117px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #171717;
+    position: relative;
+    z-index: 1;
+}
+
+.text_bold{
+    font-family: 'Gilroy bold';
+    display: inline-block;
+    font-weight: 800;
+}
+
 #scrollbar-container {
     position: absolute;
     left: 0;
@@ -37,14 +81,14 @@
 }
 
 #scrollbar {
-  position: absolute;
-  right: -4.5px;
-  height: 30px;
-  width: 15px;
-  border-radius: 10px;
-  background: url(../../public/images/SlideTwo/scroll.png) no-repeat center/cover;
+    position: absolute;
+    right: -4.5px;
+    height: 30px;
+    width: 15px;
+    border-radius: 10px;
+    background: url(../../public/images/SlideTwo/scroll.png) no-repeat center/cover;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }

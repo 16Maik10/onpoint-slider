@@ -1,0 +1,123 @@
+.popUpWrapper{
+    background-color: #16273e81;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    position: absolute;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s 0.01s;
+}
+
+.popUpWrapper_closed{
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s 0.01s, transform 0.2s 0.51s;
+}
+
+.popUp{
+    width: 80vw;
+    height: 75vh;
+    background-color: #fff;
+    border-radius: 40px;
+    position: relative;
+    left: 15vw;
+    top: 18vh;
+    padding: 5.5vh 3vw 6vh 20vw;
+}
+
+.popUp__header{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.closeBtn{
+    background: url(../../public//images/SlideThree/plus.svg);
+    border: none;
+    width: 3vw;
+    height: 3vw;
+    transform: rotate(45deg);
+}
+
+.listsWrapper{
+    margin-top: 16vh;
+    position: relative;
+}
+
+.list{
+    font-family: 'DIN Pro';
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #2e2e2e;
+    list-style-type: decimal-leading-zero;
+    counter-reset: listItem;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.list_next{
+    counter-reset: listItem 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.list_appears{
+    opacity: 1;
+}
+
+.list__item{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.list__item_next::before{
+    counter-increment: listItem;
+    content: "0" counter(listItem);
+}
+
+.list__item::before{
+    counter-increment: listItem;
+    content: "0" counter(listItem);
+    font-family: 'Gilroy-bold';
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #8cc9e8;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    width: 9vw;
+    justify-content: space-between;
+    margin-top: 8vh;
+}
+
+.nav__btn{
+    background: url(../../public/images/SlideThree/arrow.svg) no-repeat center/cover;
+    width: 15px;
+    height: 15px;
+    border: none;
+}
+
+.nav__btn:last-of-type{
+    transform: rotate(180deg);
+}
+
+.nav__circleBtn{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #fff;
+    border: 1px solid #000;
+    transition: all 0.5s;
+}
+
+.nav__circleBtn_active{
+    background-color: #fc6da9;
+    border: 1px solid #fc6da9;
+}

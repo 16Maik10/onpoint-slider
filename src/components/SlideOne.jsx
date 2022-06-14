@@ -17,14 +17,14 @@ c-5.858,5.857-5.858,15.355,0,21.213L278.787,150H15c-8.284,0-15,6.716-15,15S6.716
     return (
         <div className={`${classes.SlideOne} ${props.display ? 'show' : 'hide'}`} id="SlideOne">
             <div className="slideWrapper">
-                <p className={classes.hello}>
+                <h2 className={`title ${classes.title_slide1}`}>
                     привет,
-                </p>
-                <p className={classes.title}>
-                    это <span className={`${classes.title} ${classes.title_bold}`}>не</span>
+                </h2>
+                <p className={`text`}>
+                    это <span className={`text text_bold`}>не</span>
                     коммерческое
                     задание
-                    <MyButton content="Что дальше?" svg={svgForSlideOne} action={props.action} />
+                    <MyButton content="Что дальше?" svg={svgForSlideOne} action={props.action} classTitle={classes.MyButton_slideOne}/>
                 </p>
             </div>
             <img src="../../images/SlideOne/bio1.png" width="71px" height="68px" className={`${classes.bio} ${classes.bio_topRight}`} alt="bio" />

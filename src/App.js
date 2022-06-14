@@ -4,18 +4,18 @@ import SlideOne from './components/SlideOne';
 import SlideTwo from './components/SlideTwo';
 import Footer from './components/Footer';
 import React from 'react';
+import SlideThree from './components/SlideThree';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slides: '',
       currentSlide: 1,
       swipeStartX: 0,
       swipeEndX: 0,
       swipeStartY: 0,
       swipeEndY: 0,
-      countOfSlides: 4
+      countOfSlides: 3
     }
   }
 
@@ -35,7 +35,6 @@ class App extends React.Component {
       left: this.state.slides.offsetWidth * this.state.currentSlide,
       behavior: 'smooth'
     })
-    console.log(this.state.currentSlide)
   }
 
   swapPrev = () => {
@@ -47,7 +46,6 @@ class App extends React.Component {
       left: this.state.slides.offsetWidth * (this.state.currentSlide - 2),
       behavior: 'smooth'
     })
-    console.log(this.state.currentSlide)
   }
 
   home = () => {
@@ -58,11 +56,40 @@ class App extends React.Component {
     })
   }
 
+  spermAppear = (miniSperms,mainSperm) => {
+    const miniAppearFunc = el => {
+      el.style.transition = 'opacity 4s, transform 4s';
+      el.style.opacity = 0.5;
+      el.style.transform = 'translate(0,0)'
+    }
+    const DisappearFunc = el => {
+      setTimeout(() => {
+        el.style.opacity = 0;
+        el.style.transform = 'translate(10vw,5vw)';
+        el.style.transition = 'unset';
+      }, 300)
+    }
+    const mainAppearFunc = el => {
+      el.style.transition = 'opacity 4s, transform 4s';
+      el.style.opacity = 1;
+      el.style.transform = 'translate(0,0)'
+    }
+    if (this.state.currentSlide === 2) {
+      miniSperms.forEach(el => miniAppearFunc(el));
+      mainAppearFunc(mainSperm);
+    } else {
+      miniSperms.forEach(el => DisappearFunc(el));
+      DisappearFunc(mainSperm);
+    }
+  }
+
   componentDidMount() {
     let $ = document.getElementById.bind(document),
       container = $('scrollbar-container'),
       content = $('message'),
-      scroll = $('scrollbar');
+      scroll = $('scrollbar'),
+      miniSperms = [$('sperm1'), $('sperm2'), $('sperm3'), $('sperm4')],
+      mainSperm = $('mainSperm')
 
     this.setState({
       slides: document.querySelector('.slides'),
@@ -92,11 +119,11 @@ class App extends React.Component {
           this.swapPrev();
         }
       }, 10)
+      setTimeout(() => this.spermAppear(miniSperms,mainSperm), 100)
     })
 
-    console.log('Start');
 
-    function handleScroll (start) {
+    function handleScroll(start) {
       start.preventDefault();
       let y = scroll.offsetTop;
       let onMoveByMouse = function (end) {
@@ -130,7 +157,6 @@ class App extends React.Component {
 
     scroll.addEventListener('mousedown', handleScroll);
     scroll.addEventListener('touchstart', handleScroll);
-    console.log('Done');
   }
   render() {
     return (
@@ -139,9 +165,8 @@ class App extends React.Component {
           <Nav action={this.home} />
           <div className="slides">
             <SlideOne action={this.swapNext} />
-            <SlideTwo show={this.state.currentSlide === 2} />
-            <SlideOne action={this.swapNext} />
             <SlideTwo />
+            <SlideThree />
           </div>
         </div>
         <Footer />
